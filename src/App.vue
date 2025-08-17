@@ -106,8 +106,11 @@ export default {
     return {
       GetKey,
       FetchWeatherData,
+      DisplayData,
+      ShowTime,
       CountryValue,
       WeatherAPI,
+      ReceivedWeatherData,
     }
   },
   mounted() {
