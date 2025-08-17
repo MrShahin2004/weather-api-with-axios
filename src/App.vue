@@ -37,6 +37,47 @@
 </template>
 
 <script>
+import { reactive, ref } from 'vue'
+import axios from 'axios'
+
+export default {
+  name: 'App',
+  setup() {
+    'use strict'
+    let CountryValue = ref('')
+    let WeatherAPI = reactive({
+      url: 'https://api.openweathermap.org/data/2.5/weather?q=',
+      key: '',
+    })
+
+    async function GetKey() {
+      try {
+        let Response = await axios.get('http://localhost:3100/api/weather/key?t=', Date.now())
+        let Data = Response.data
+        let Key = Data.key
+
+        WeatherAPI.key = Key
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    async function FetchWeatherData() {
+      let Response = await axios.get(`${WeatherAPI.url}${CountryValue.value}&appid=${WeatherAPI.key}`)
+      console.log(Response)
+    }
+
+    return {
+      GetKey,
+      FetchWeatherData,
+      CountryValue,
+      WeatherAPI,
+    }
+  },
+  mounted() {
+    this.GetKey()
+  },
+}
 </script>
 
 <style></style>
