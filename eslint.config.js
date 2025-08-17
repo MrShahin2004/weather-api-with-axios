@@ -9,9 +9,7 @@ export default defineConfig([
     name: 'app/files-to-lint',
     files: ['**/*.{js,mjs,jsx,vue}'],
   },
-
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
-
   {
     languageOptions: {
       globals: {
@@ -19,7 +17,16 @@ export default defineConfig([
       },
     },
   },
-
+  {
+    files: ['server/**/*.js'], // Apply only to your server files
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: 'script',
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   skipFormatting,
