@@ -8,3 +8,11 @@
   list-style: none;
   box-sizing: border-box;
 }
+
+#body {
+  background-image: url("../../weather-api-with-axios/src/assets/images/cool_picture.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
