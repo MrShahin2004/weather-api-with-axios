@@ -5,8 +5,8 @@ const Express = require('express')
 const CORS = require('cors')
 
 const WeatherAPIKey = process.env.WEATHER_API_KEY
-const ServerPort = process.env.SERVER_PORT
 const ServerHost = process.env.SERVER_HOST
+const ServerPort = process.env.SERVER_PORT
 
 const App = Express()
 App.use(Express.json())
