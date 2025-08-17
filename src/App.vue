@@ -8,6 +8,8 @@
       style="justify-content: space-evenly"
     >
       <input
+        @keydown.enter="FetchWeatherData"
+        v-model="CountryValue"
         class="weather-input w-[100%] rounded-[0.5rem] placeholder-black placeholder-opacity-100 focus:bg-[white]"
         style="padding: 0.5rem 1rem"
         placeholder="Insert a city or country"
