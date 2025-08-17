@@ -49,6 +49,7 @@ export default {
       url: 'https://api.openweathermap.org/data/2.5/weather?q=',
       key: '',
     })
+    let ReceivedWeatherData = reactive(null);
 
     async function GetKey() {
       try {
