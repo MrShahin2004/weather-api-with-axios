@@ -64,7 +64,9 @@ export default {
 
     async function FetchWeatherData() {
       let Response = await axios.get(`${WeatherAPI.url}${CountryValue.value}&appid=${WeatherAPI.key}`)
-      console.log(Response)
+      ReceivedWeatherData = Response.data;
+
+      DisplayData(ReceivedWeatherData);
     }
 
     return {
