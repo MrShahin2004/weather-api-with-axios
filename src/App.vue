@@ -70,6 +70,39 @@ export default {
       DisplayData(ReceivedWeatherData);
     }
 
+    function DisplayData(data) {
+      let CityEl = document.querySelector(".region-city");
+      let CountryEl = document.querySelector(".region-country");
+      let DateEl = document.querySelector(".weather-date");
+      let TempEl = document.querySelector(".weather-temp");
+      let StatusEl = document.querySelector(".weather-status");
+      let MaxTempEl = document.querySelector(".max-temp");
+      let MinTempEl = document.querySelector(".min-temp");
+
+      CityEl.innerHTML = data.name;
+      CountryEl.innerHTML = data.sys.country;
+      DateEl.innerHTML = ShowTime();
+      TempEl.innerHTML = `${Math.floor(data.main.temp - 273.15)}°C`;
+      StatusEl.innerHTML = data.weather[0].main;
+      MaxTempEl.innerHTML = `${Math.floor(data.main.temp_max - 273.15)}°C`;
+      MinTempEl.innerHTML = `${Math.floor(data.main.temp_min - 273.15)}°C`;
+    }
+
+    function ShowTime() {
+      let Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      let Months = ["January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"];
+
+      let RightNow = new Date();
+      let ThisDay = Days[RightNow.getDay()];
+      let ThisMonth = Months[RightNow.getMonth()];
+      let ThisYear = RightNow.getFullYear();
+      let ThisDate = RightNow.getDate();
+
+      return `${ThisDay} ${ThisMonth} ${ThisDate}, ${ThisYear}`;
+    }
+
     return {
       GetKey,
       FetchWeatherData,
